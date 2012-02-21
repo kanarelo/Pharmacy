@@ -14,7 +14,7 @@
 			}else{
 				if (!$message){
 					$message = "Server Error";
-					$long_message = "An error occured while trying to load page [$url].";
+					$long_message = "An error occured while trying to load page.";
 				}
 			}
 			?>
@@ -30,7 +30,7 @@
 				</html>
 			<?php
 			global $DEBUG;
-			if (!$DEBUG){
+			if ($DEBUG){
 				die();
 			}
 		}

@@ -2,9 +2,7 @@
 	<ul>
 	    <li><a href="{#BASE_URL#}/">Home</a></li>
 	    <li><a href="{#BASE_URL#}/auth/login/">Login</a></li>
-	    <li><a href="{#BASE_URL#}/auth/register/">Register</a></li>
-	    <li><a href="{#BASE_URL#}/auth/forgot-password/">Forgot Password</a></li>
-	    <li><a href="{#BASE_URL#}/auth/resend-activation/">Resend Activation Email</a></li>
+	    <li><a href="{#BASE_URL#}/contacts/">Contacts</a></li>
 	</ul>
 {else}
 	<ul>
