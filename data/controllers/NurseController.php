@@ -92,7 +92,7 @@
 		public function add($args){
 			$request = $args["request"];
 			global $router, $smarty;
-			userIsAdmin($request->user);
+			userBelongsToGroups($request->user,'admin,pharmacists');
 			
 			if ($request->method == "POST"){
 				$new_nurse = R::graph($request->POST['staff']);
@@ -124,7 +124,7 @@
 		public function edit($args){
 			$request = $args["request"];
 			global $smarty;
-			userIsAdmin($request->user);
+			userBelongsToGroups($request->user,'admin,pharmacists');
 			
 			$id = $args[":id"];
 			$nurse = R::load("nurse", $id);

@@ -8,10 +8,10 @@
 			if ($request->method == "POST"){
 				$new_product = R::graph($request->POST['product']);
 				
-				$_id = R::store($new_product);
 				if($new_product->category){
 					$new_product->category = R::load("category", $new_product->category);;
 				}
+				$_id = R::store($new_product);
 				if($_id){
 					redirectToPage('product-list');
 				}

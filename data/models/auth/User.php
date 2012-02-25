@@ -35,7 +35,10 @@ class Model_User extends RedBean_SimpleModel{
 	}
 	
 	public function belongsToGroups($groupNames){
-		if (is_string($groupNames)){$groupNames=explode(",",$groupNames);}
+		if (is_string($groupNames)){
+			$groupNames=explode(",",$groupNames);
+		}
+		
 		$groups = R::find('group', 'slug IN ('.R::genSlots($groupNames).')', $groupNames);
 		foreach($groups as $group){
 			if (R::areRelated($this->bean, $group)){

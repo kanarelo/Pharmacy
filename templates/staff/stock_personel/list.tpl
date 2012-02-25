@@ -22,7 +22,7 @@
 									<td>{$stock_personel->last_name}</td>
 									<td>
 										<a href="{#BASE_URL#}/stock_personel/{$product->id}/">R</a>
-										{if $request->user->belongsToGroup('admin')}
+										{if $request->user->belongsToGroups('admin,pharmacist')}
 											|
 											<a href="{#BASE_URL#}/admin/staff/stock-personel/{$stock_personel->id}/edit/">U</a> |
 											<a href="{#BASE_URL#}/admin/staff/stock-personel/{$stock_personel->id}/delete/">D</a>

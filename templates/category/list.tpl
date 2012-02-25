@@ -18,9 +18,12 @@
 									<td>{$category->id}</td>
 									<td>{$category->name}</td>
 									<td>
-										<a href="{#BASE_URL#}/product-categories/{$category->id}/">R</a> |
-										<a href="{#BASE_URL#}/product-categories/{$category->id}/edit/">U</a> |
-										<a href="{#BASE_URL#}/admin/product-categories/{$category->id}/delete/">D</a>
+										<a href="{#BASE_URL#}/product-categories/{$category->id}/">R</a>
+										{if $request->user->belongsToGroups('admin')}
+											|
+											<a href="{#BASE_URL#}/product-categories/{$category->id}/edit/">U</a> |
+											<a href="{#BASE_URL#}/admin/product-categories/{$category->id}/delete/">D</a>
+										{/if}
 									</td>
 								</tr>
 							{foreachelse}

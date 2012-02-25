@@ -3,7 +3,7 @@
 		public function add($args){
 			$request = $args["request"];
 			global $router, $smarty;
-			checkLoggedIn($request->user);
+			userBelongsToGroups($request->user,'admin,pharmacists');
 			
 			if ($request->method == "POST"){
 				$new_stock_personel = R::graph($request->POST['staff']);
@@ -35,7 +35,7 @@
 		public function edit($args){
 			$request = $args["request"];
 			global $smarty;
-			checkLoggedIn($request->user);
+			userBelongsToGroups($request->user,'admin,pharmacists');
 			
 			$id = $args[":id"];
 			$stock_personel = R::load("stock_personel", $id);
@@ -78,7 +78,7 @@
 		
 		public function view($args){
 			$request = $args["request"];
-			checkLoggedIn($request->user);
+			userBelongsToGroups($request->user,'admin,pharmacists');
 			global $smarty;
 			
 			if ($request->method == "GET"){
@@ -98,7 +98,7 @@
 		
 		public function view_list($args){
 			$request = $args["request"];
-			checkLoggedIn($request->user);
+			userBelongsToGroups($request->user,'admin,pharmacists');
 			global $smarty;
 			
 			if ($request->method == "GET"){

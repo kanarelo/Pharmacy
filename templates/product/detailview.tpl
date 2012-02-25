@@ -15,8 +15,8 @@
 						</div>
 						{if $request->user->belongsToGroups('doctors')}
 							<div class="clearfix">
-								<button class="button blue"><a href="{#BASE_URL#}/products/{$product->id}/approve/">Approve</a></button>
-								<button class="button"><a href="{#BASE_URL#}/products/{$product->id}/disapprove/">Disapprove</a></button>
+								<a class="button blue" href="{#BASE_URL#}/products/{$product->id}/approve/">Approve</a>
+								<a class="button" href="{#BASE_URL#}/products/{$product->id}/disapprove/">Disapprove</a>
 							</div>
 						{/if}
 						{if $request->user->belongsToGroup('doctors')}

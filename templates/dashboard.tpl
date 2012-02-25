@@ -1,5 +1,4 @@
 {extends "base.tpl"}
-
 {block "page-title"}{/block}
 
 {block "container"}
@@ -7,11 +6,13 @@
 		<h2>Nurse Dashboard</h2>
 		<div class="nurse-dashboard">
 		</div>
-	{else if $request->user->belongsToGroups('pharmacists')}
+	{/if}
+	{if $request->user->belongsToGroups('pharmacists')}
 		<h2>Pharmacist Dashboard</h2>
 		<div class="pharmacists-dashboard">
 		</div>
-	{else if $request->user->belongsToGroups('doctors')}
+	{/if}
+	{if $request->user->belongsToGroups('doctors')}
 		<div class="row clearfix">
 			<div class="col_12">
 				<div class="widget clearfix" style="height: 300px;">
@@ -26,10 +27,12 @@
 				</div>
 			</div>
 		</div>
-	{else if $request->user->belongsToGroups('inventory-personel')}
+	{/if}
+	{if $request->user->belongsToGroups('inventory-personel')}
 		<div class="inventory-personel-dashboard">
 		</div>
-	{else if $request->user->belongsToGroups('admin')}
+	{/if}
+	{if $request->user->belongsToGroups('admin')}
 		
 	{/if}
 {/block}

@@ -11,7 +11,7 @@
 					<form class="form" method="POST" action=".">
 						<input type="hidden" name="feedback[type]" value="feedback" />
 						<div class="clearfix">
-							<label for="text_field">Description:</label>
+							<label for="text_field">Reason:</label>
 							<div class="input">
 								<textarea type="text" name="feedback[description]"/></textarea>
 							</div>

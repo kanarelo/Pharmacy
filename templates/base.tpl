@@ -46,7 +46,7 @@
 	<body {block "body-id"}{/block}>
 		{block "body"}
 			<div id="cboxOverlay" style="display: none; "></div>
-			<div style="padding-bottom: 42px; padding-right: 42px; display: none; " id="colorbox" class="">
+			<div style="padding-bottom: 42px; padding-right: 42px; display: none; " id="colorbox">
 				<div id="cboxWrapper" style="">
 					<div style="">
 						<div id="cboxTopLeft" style="float: left; "></div><div id="cboxTopCenter" style="float: left; "></div><div id="cboxTopRight" style="float: left; "></div>
@@ -54,7 +54,7 @@
 					<div style="clear: left; ">
 						<div id="cboxMiddleLeft" style="float: left; "></div>
 						<div id="cboxContent" style="float: left; ">
-							<div id="cboxLoadedContent" style="width: 0px; height: 0px; overflow-x: hidden; overflow-y: hidden; " class=""></div><div id="cboxLoadingOverlay" style="" class=""></div><div id="cboxLoadingGraphic" style="" class=""></div><div id="cboxTitle" style="" class=""></div><div id="cboxCurrent" style="" class=""></div><div id="cboxNext" style="" class=""></div><div id="cboxPrevious" style="" class=""></div><div id="cboxSlideshow" style="" class=""></div><div id="cboxClose" style="" class=""></div>
+							<div id="cboxLoadedContent" style="width: 0px; height: 0px; overflow-x: hidden; overflow-y: hidden; "></div><div id="cboxLoadingOverlay" style=""></div><div id="cboxLoadingGraphic" style=""></div><div id="cboxTitle" style=""></div><div id="cboxCurrent" style=""></div><div id="cboxNext" style=""></div><div id="cboxPrevious" style=""></div><div id="cboxSlideshow" style=""></div><div id="cboxClose" style=""></div>
 						</div><div id="cboxMiddleRight" style="float: left; "></div>
 					</div>
 					<div style="clear: left; ">
@@ -86,18 +86,36 @@
 							<li class="active iconed">
 								<a href="{#BASE_URL#}/"><span><img src="{#BASE_URL#}/static/images/icon_dashboard.png"> Dashboard</span></a>
 							</li>
+							<li>
+								<a href="{#BASE_URL#}/products/"><span>Products</span></a>
+							</li>
 							{if $request->user->belongsToGroups('nurses')}
 							{else if $request->user->belongsToGroups('pharmacists')}
+								<li>
+									<a href="{#BASE_URL#}/wards/"><span>Wards</span></a>
+								</li>
+								<li>
+									<a href="" class="sf-with-ul"><span>Staff</span><span class="sf-sub-indicator"> »</span></a>
+									<ul style="display: none; visibility: hidden; ">
+										<li>
+											<a href="{#BASE_URL#}/staff/doctors/"><span>Doctors</span></a>
+										</li>
+										<li>
+											<a href="{#BASE_URL#}/staff/doctors/"><span>Nurses</span></a>
+										</li>
+										<li>
+											<a href="{#BASE_URL#}/staff/stock-personel/"><span>Stock</span></a>
+										</li>
+										<li>
+											<a href="{#BASE_URL#}/staff/pharmacists/"><span>Pharmacists</span></a>
+										</li>
+									</ul>
+								</li>
 							{else if $request->user->belongsToGroups('doctors')}
-								<li class="">
-									<a href="{#BASE_URL#}/"><span>Products</span></a>
-								</li>
 							{else if $request->user->belongsToGroups('inventory-personel')}
-							{else if $request->user->belongsToGroups('admin')}
-								<li class="">
-									<a href="{#BASE_URL#}/products/"><span>Products</span></a>
-								</li>
-								<li class="">
+							{/if}
+							{if $request->user->belongsToGroups('admin') && !$request->user->belongsToGroups('pharmacists')}
+								<li>
 									<a href="" class="sf-with-ul"><span>Staff</span><span class="sf-sub-indicator"> »</span></a>
 									<ul style="display: none; visibility: hidden; ">
 										<li>

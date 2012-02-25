@@ -1,4 +1,4 @@
-{extends "base.tpl"}
+{extends "base.tpl"}	
 
 {block "container"}
 	<div class="row clearfix">
@@ -24,7 +24,7 @@
 									<td>{if $product->category}{$product->category->name}{/if}</td>
 									<td>
 										<a href="{#BASE_URL#}/products/{$product->id}/">R</a>
-										{if $request->user->belongsToGroup('admin')}
+										{if $request->user->belongsToGroups('admin')}
 											|
 											<a href="{#BASE_URL#}/admin/products/{$product->id}/edit/">U</a> |
 											<a href="{#BASE_URL#}/admin/products/{$product->id}/delete/">D</a>
