@@ -3,15 +3,13 @@
 
 {block "container"}
 	{if $request->user->belongsToGroups('nurses')}
-		<h2>Nurse Dashboard</h2>
 		<div class="nurse-dashboard">
 		</div>
 	{/if}
 	{if $request->user->belongsToGroups('pharmacists')}
-		<h2>Pharmacist Dashboard</h2>
 		<div class="pharmacists-dashboard">
 		</div>
-	{/if}
+	{/if}	
 	{if $request->user->belongsToGroups('doctors')}
 		<div class="row clearfix">
 			<div class="col_12">

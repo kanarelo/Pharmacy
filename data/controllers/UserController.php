@@ -20,8 +20,10 @@
 				}
 				
 				if(isset($request->POST["groups"])){
-					print_r($request->POST["groups"]); exit;
 					$group_ids = $request->POST["groups"];
+					if(count($group_ids)){
+						R::clearRelations($edited_user, 'group');
+					}
 					foreach ($group_ids as $group_id){
 						$group = R::load('group', $group_id);
 						if($group->id){
@@ -55,6 +57,9 @@
 					
 					if(isset($request->POST["groups"])){
 						$group_ids = $request->POST["groups"];
+						if(count($group_ids)){
+							R::clearRelations($edited_user, 'group');
+						}
 						foreach ($group_ids as $group_id){
 							$group = R::load('group', $group_id);
 							if($group->id){
@@ -82,7 +87,7 @@
 		
 		public function view($args){
 			$request = $args["request"];
-			checkLoggedIn($request->user);
+			userIsAdmin($request->user);
 			global $smarty;
 			
 			if ($request->method == "GET"){
@@ -103,7 +108,7 @@
 		
 		public function view_list($args){
 			$request = $args["request"];
-			checkLoggedIn($request->user);
+			userIsAdmin($request->user);
 			global $smarty;
 			
 			if ($request->method == "GET"){
