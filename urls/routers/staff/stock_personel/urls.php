@@ -1,5 +1,5 @@
 <?php
-	$stock_personel_list = new Route("$BASE_URL/admin/staff/stock-personel/");
+	$stock_personel_list = new Route("$BASE_URL/staff/stock-personel/");
 	$stock_personel_list->setMapClass("StockPersonel")->setMapMethod("view_list");
 	$router->addRoute( "stock-personel-list", $stock_personel_list );
 	

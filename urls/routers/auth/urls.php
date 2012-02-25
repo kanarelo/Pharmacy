@@ -1,10 +1,6 @@
 <?php
 	require_once("users/urls.php");
 	
-	$auth_index = new Route("$BASE_URL/auth/");
-	$auth_index->setMapClass("Auth")->setMapMethod("index");
-	$router->addRoute( "auth-index", $auth_index );
-	
 	$auth_login = new Route("$BASE_URL/auth/login/");
 	$auth_login->setMapClass("Auth")->setMapMethod("login");
 	$router->addRoute( "auth-login", $auth_login );

@@ -28,7 +28,8 @@
 			$smarty->assign("users", $user_ids);
 			
 			$smarty->assign("request", $request);
-			$smarty->display('staff/stock_personel/add.tpl');
+			$smarty->assign("stock_personel", R::dispense("stock_personel"));
+			$smarty->display('staff/stock_personel/edit.tpl');
 		}
 		
 		public function edit($args){

@@ -3,6 +3,7 @@
 	require_once("nurse/urls.php");
 	require_once("stock_personel/urls.php");
 	require_once("doctor/urls.php");
+	require_once("stock_personel/urls.php");
 	
 	//setup the default url
 	$default_route = new Route("$BASE_URL/staff/");

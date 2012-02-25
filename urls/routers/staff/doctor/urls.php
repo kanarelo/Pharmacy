@@ -1,5 +1,5 @@
 <?php
-	$doctor_list = new Route("$BASE_URL/admin/staff/doctors/");
+	$doctor_list = new Route("$BASE_URL/staff/doctors/");
 	$doctor_list->setMapClass("Doctor")->setMapMethod("view_list");
 	$router->addRoute( "doctor-list", $doctor_list );
 	

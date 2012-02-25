@@ -28,7 +28,8 @@
 			$smarty->assign("users", $user_ids);
 			
 			$smarty->assign("request", $request);
-			$smarty->display('staff/pharmacist/add.tpl');
+			$smarty->assign("pharmacist", R::dispense('pharmacist'));
+			$smarty->display('staff/pharmacist/edit.tpl');
 		}
 		
 		public function edit($args){

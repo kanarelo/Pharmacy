@@ -26,7 +26,8 @@
 			$smarty->assign("users", R::find('user'));
 			
 			$smarty->assign("request", $request);
-			$smarty->display('staff/doctor/add.tpl');
+			$smarty->assign("doctor", R::dispense('doctor'));
+			$smarty->display('staff/doctor/edit.tpl');
 		}
 		
 		public function edit($args){

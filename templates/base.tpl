@@ -1,45 +1,153 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en-us">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>{block "title"}{/block}</title>
+		<meta charset="utf-8">
+		<link rel="apple-touch-con" href="">
+		<title>Muse Admin Panel</title>
+		<link rel="stylesheet" href="{#BASE_URL#}/static/css/columnal.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="{#BASE_URL#}/static/css/jqueryui.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="{#BASE_URL#}/static/css/style.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="{#BASE_URL#}/static/css/global.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="{#BASE_URL#}/static/css/config.css" type="text/css" media="screen">
 		
-		{block "extracss"}{/block}
-		{block "extrajs"}{/block}
+		{block "extracss"}
+			<link rel="stylesheet" href="{#BASE_URL#}/static/css/superfish.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="{#BASE_URL#}/static/css/validationEngine.jquery.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="{#BASE_URL#}/static/css/validationEngine.jquery.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="{#BASE_URL#}/static/css/jquery.cleditor.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="{#BASE_URL#}/static/css/fullcalendar.print.css" type="text/css" media="print">
+			<link rel="stylesheet" href="{#BASE_URL#}/static/css/fullcalendar.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="{#BASE_URL#}/static/css/colorbox.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="{#BASE_URL#}/static/css/colorpicker.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="{#BASE_URL#}/static/css/uploadify.css" type="text/css" media="screen">
+		{/block}
+		{block "extrajs"}
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+			<script type="text/javascript" src="{#BASE_URL#}/static/js/jquery.placeholder.1.2.min.shrink.js"></script>
+			<script src="{#BASE_URL#}/static/js/superfish.js"></script>
+			<script type="text/javascript" src="{#BASE_URL#}/static/js/jquery.flot.min.js"></script>
+			<script type="text/javascript" src="{#BASE_URL#}/static/js/jquery.flot.pie.min.js"></script>
+			<script type="text/javascript" src="{#BASE_URL#}/static/js/jquery.flot.stack.min.js"></script>
+			<script src="{#BASE_URL#}/static/js/jquery.validationEngine.js"></script>
+			<script src="{#BASE_URL#}/static/js/jquery.validationEngine-en.js"></script>
+			<script src="{#BASE_URL#}/static/js/jquery.dataTables.min.js"></script>
+			<script src="{#BASE_URL#}/static/js/twipsy.js"></script>
+			<script src="{#BASE_URL#}/static/js/jquery.cleditor.min.js"></script>
+			<script src="{#BASE_URL#}/static/js/fullcalendar.min.js"></script>
+			<script src="{#BASE_URL#}/static/js/gcal.js"></script>
+			<script src="{#BASE_URL#}/static/js/jquery.colorbox-min.js"></script>
+			<script src="{#BASE_URL#}/static/js/colorpicker.js"></script>
+			<script src="{#BASE_URL#}/static/js/muse.js"></script>
+			<script type="text/javascript" src="{#BASE_URL#}/static/js/jquery.uploadify.v2.1.4.min.js"></script>
+			<script type="text/javascript" src="{#BASE_URL#}/static/js/swfobject.js"></script>
+			<script src="{#BASE_URL#}/static/js/demo.js"></script>
+		{/block}
 	</head>
-	<body>
+	<body {block "body-id"}{/block}>
 		{block "body"}
-			<div id="main_container">
-				{block "main_container"}
-					  <div class="title_icon">
-					    <div id="logo"></div>
-					    <div class="right_header">
-					      <div id="menu">
-					      	{block "menu"}
-								{include "auth/left-nav.tpl"}
-							{/block}
-					      </div>
-					    </div>
-					    <img src="{#BASE_URL#}/static/images/cross.jpg" width="270" height="150" longdesc="{#BASE_URL#}/static/images/cross.jpg" />
-					     <div align="left">
-					     	<span class="style14">PHARMACARE</span> 
-					     	<span class="style12">Your Pharmacy management partner </span> 
-					     </div>
-					  </div>
-					  <div id="middle_box">
-						  {block "middle_box"}
-						  		
-						  {/block}
-				{/block}
+			<div id="cboxOverlay" style="display: none; "></div>
+			<div style="padding-bottom: 42px; padding-right: 42px; display: none; " id="colorbox" class="">
+				<div id="cboxWrapper" style="">
+					<div style="">
+						<div id="cboxTopLeft" style="float: left; "></div><div id="cboxTopCenter" style="float: left; "></div><div id="cboxTopRight" style="float: left; "></div>
+					</div>
+					<div style="clear: left; ">
+						<div id="cboxMiddleLeft" style="float: left; "></div>
+						<div id="cboxContent" style="float: left; ">
+							<div id="cboxLoadedContent" style="width: 0px; height: 0px; overflow-x: hidden; overflow-y: hidden; " class=""></div><div id="cboxLoadingOverlay" style="" class=""></div><div id="cboxLoadingGraphic" style="" class=""></div><div id="cboxTitle" style="" class=""></div><div id="cboxCurrent" style="" class=""></div><div id="cboxNext" style="" class=""></div><div id="cboxPrevious" style="" class=""></div><div id="cboxSlideshow" style="" class=""></div><div id="cboxClose" style="" class=""></div>
+						</div><div id="cboxMiddleRight" style="float: left; "></div>
+					</div>
+					<div style="clear: left; ">
+						<div id="cboxBottomLeft" style="float: left; "></div><div id="cboxBottomCenter" style="float: left; "></div><div id="cboxBottomRight" style="float: left; "></div>
+					</div>
+				</div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; "></div>
 			</div>
-			<div id="footer">
+			<div id="wrap">
+				<div id="main">
+					<header class="container">
+						<div class="row clearfix">
+							<div class="left">
+								<a href="index.php" id="logo">Muse</a>
+							</div>
+							<div class="right">
+								<ul id="toolbar">
+									<li>
+										<span>Logged in as </span><a class="user" href="#">{$request->user->username}</a>
+									</li>
+									<li>
+										<a id="logoutprofile" href="{#BASE_URL#}/auth/logout/">Logout</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</header>
+					<nav class="container">
+						<ul class="sf-menu mobile-hide row clearfix sf-js-enabled sf-shadow">
+							<li class="active iconed">
+								<a href="{#BASE_URL#}/"><span><img src="{#BASE_URL#}/static/images/icon_dashboard.png"> Dashboard</span></a>
+							</li>
+							{if $request->user->belongsToGroups('nurses')}
+							{else if $request->user->belongsToGroups('pharmacists')}
+							{else if $request->user->belongsToGroups('doctors')}
+								<li class="">
+									<a href="{#BASE_URL#}/"><span>Products</span></a>
+								</li>
+							{else if $request->user->belongsToGroups('inventory-personel')}
+							{else if $request->user->belongsToGroups('admin')}
+								<li class="">
+									<a href="{#BASE_URL#}/products/"><span>Products</span></a>
+								</li>
+								<li class="">
+									<a href="" class="sf-with-ul"><span>Staff</span><span class="sf-sub-indicator"> »</span></a>
+									<ul style="display: none; visibility: hidden; ">
+										<li>
+											<a href="{#BASE_URL#}/staff/doctors/"><span>Doctors</span></a>
+										</li>
+										<li>
+											<a href="{#BASE_URL#}/staff/doctors/"><span>Nurses</span></a>
+										</li>
+										<li>
+											<a href="{#BASE_URL#}/staff/stock-personel/"><span>Stock</span></a>
+										</li>
+										<li>
+											<a href="{#BASE_URL#}/staff/pharmacists/"><span>Pharmacists</span></a>
+										</li>
+									</ul>
+								</li>
+							{/if}
+						</ul>
+					</nav>
+					<div id="titlediv">
+						{block "titlediv"}
+							<div class="clearfix container" id="pattern">
+								<div class="row">
+									<div class="col_12">
+										<ul class="breadcrumbs hor-list">
+											<li>
+												<a href="index.php">Dashboard</a>
+											</li>
+										</ul>
+										<h1>{block "page-title"}Dashboard{/block}</h1>
+									</div>
+								</div>
+							</div>
+						{/block}
+					</div>
+					<div class="container" id="actualbody">{block "container"}{/block}</div>
+				</div>
+			</div>
+			<footer>
 				{block "footer"}
-				    <div class="footer_links"></div>
-				    <div style="clear:both;">
-				      <div align="left"><img src="{#BASE_URL#}/static/images/hioxindia-pharmacy_03.jpg" alt="" width="903" height="86" /></div>
-				    </div>
+					<div class="container">
+						<div class="row clearfix">
+							<div class="col_12">
+								<span class="left">© 2011 Themio.</span>
+								<span class="right">Powered by Muse</span>
+							</div>
+						</div>
+					</div>
 				{/block}
-			</div>
+			</footer>
 		{/block}
 	</body>
 </html>

@@ -5,6 +5,7 @@
 	require_once("staff/urls.php");
 	require_once("ward/urls.php");
 	require_once("prescription/urls.php");
+	require_once("search_urls.php");
 	
 	//setup the default url
 	$default_route = new Route("$BASE_URL/");

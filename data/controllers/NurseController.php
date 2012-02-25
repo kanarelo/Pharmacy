@@ -116,8 +116,9 @@
 			}
 			$smarty->assign("users", $user_ids);
 			
+			$smarty->assign("nurse", R::dispense('nurse'));
 			$smarty->assign("request", $request);
-			$smarty->display('staff/nurse/add.tpl');
+			$smarty->display('staff/nurse/edit.tpl');
 		}
 		
 		public function edit($args){
@@ -128,8 +129,9 @@
 			$id = $args[":id"];
 			$nurse = R::load("nurse", $id);
 			
-			if(!$nurse){
+			if(!$nurse->id){
 				PageError::show('404',NULL,'Nurse not found!', "Nurse with Id: $id not found!");
+				die();
 			}
 			
 			if ($request->method == "POST"){
@@ -155,6 +157,7 @@
 					$smarty->assign("users", R::find('user'));
 				}else{
 					PageError::show('404',NULL,'Nurse not found!', "Nurse with Id: $id not found!");
+					die();
 				}
 			}
 			
@@ -181,6 +184,7 @@
 					$smarty->assign("nurse", $nurse);
 				}else{
 					PageError::show('404',NULL,'Nurse not found!', "Nurse with Id: $id not found!");
+					die();
 				}
 			}
 			

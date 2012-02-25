@@ -1,38 +1,59 @@
 {extends "base.tpl"}
 
-{block "body"}
-	<form method="POST" action=".">
-		<input type="hidden" name="staff[id]" value="{$doctor->id}" />
-		<input type="hidden" name="staff[type]" value="doctor" />
-		<p>
-			<label for="id_first_name">First Name:</label>
-			<input type="text" name="staff[first_name]" value="{$doctor->first_name}" />
-		</p>
-		<p>
-			<label for="id_last_name">Last Name:</label>
-			<input type="text" name="staff[last_name]" value="{$doctor->last_name}" />
-		</p>
-		<p>
-			<label for="id_speciality">Speciality:</label>
-			<input type="text" name="staff[speciality]" value="{$doctor->speciality}" />
-		</p>
-		<p>
-			<label for="id_speciality">Notes:</label>
-			<textarea name="staff[notes]">{$doctor->notes}</textarea>
-		</p>
-		<p>
-			<label for="id_speciality">User:</label>
-			<select name="user">
-				<option value='null'>----</option>
-				{foreach $users as $user}
-					<option value='{$user->id}' {if isset($parent_user)}{if $user->id eq $parent_user->id}selected="selected"{/if}{/if}>
-						{$user->username}
-					</option>
-				{/foreach}
-			</select>
-		</p>
-		<p>
-			<input type="submit" value="Edit">
-		</p>
-	</form>
+{block "container"}
+	<div class="row clearfix">
+		<div class="col_12">
+			<div class="widget clearfix" style="min-height: 300px;">
+				<h2>{if $doctor->id}Edit{else}Add{/if} Doctor</h2>
+				<div class="widget_inside drugs-search">
+					<form class="form" method="POST" action=".">
+						<input type="hidden" name="staff[id]" value="{$doctor->id}" />
+						<input type="hidden" name="staff[type]" value="doctor" />
+						<div class="clearfix">
+							<label for="id_first_name">First Name:</label>
+							<div class="input">
+								<input type="text" name="staff[first_name]" value="{$doctor->first_name}" />
+							</div>
+						</div>
+						<div class="clearfix">
+							<label for="id_last_name">Last Name:</label>
+							<div class="input">
+								<input type="text" name="staff[last_name]" value="{$doctor->last_name}" />
+							</div>
+						</div>
+						<div class="clearfix">
+							<label for="id_speciality">Speciality:</label>
+							<div class="input">
+								<input type="text" name="staff[speciality]" value="{$doctor->speciality}" />
+							</div>
+						</div>
+						<div class="clearfix">
+							<label for="id_speciality">Notes:</label>
+							<div class="input">
+								<textarea name="staff[notes]">{$doctor->notes}</textarea>
+							</div>
+						</div>
+						<div class="clearfix">
+							<label for="id_speciality">User:</label>
+							<div class="input">
+								<select name="user">
+									<option value='null'>----</option>
+									{foreach $users as $user}
+										<option value='{$user->id}' {if isset($parent_user)}{if $user->id eq $parent_user->id}selected="selected"{/if}{/if}>
+											{$user->username}
+										</option>
+									{/foreach}
+								</select>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="input grey-highlight">
+								<input type="submit" class="button blue" value="Edit">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 {/block}

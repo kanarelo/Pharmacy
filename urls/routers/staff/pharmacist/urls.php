@@ -1,5 +1,5 @@
 <?php
-	$pharmacist_list = new Route("$BASE_URL/admin/staff/pharmacists/");
+	$pharmacist_list = new Route("$BASE_URL/staff/pharmacists/");
 	$pharmacist_list->setMapClass("Pharmacist")->setMapMethod("view_list");
 	$router->addRoute( "pharmacist-list", $pharmacist_list );
 	
