@@ -114,6 +114,9 @@
 										</li>
 									</ul>
 								</li>
+								<li>
+									<a href="{#BASE_URL#}/admin/users/"><span>Users</span></a>
+								</li>
 							{/if}
 						</ul>
 					</nav>

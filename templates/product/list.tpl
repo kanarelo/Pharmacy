@@ -6,6 +6,7 @@
 			<div class="widget clearfix" style="min-height: 300px;">
 				<h2>Products</h2>
 				<div class="widget_inside drugs-search">
+					<div id="add" style="width:100%;clear:both"><a href="{#BASE_URL#}/admin/products/add/" class="button blue" style="float:right">Add Product</a></div>
 					{if $products}
 						<table class='regular'>
 							<tr>

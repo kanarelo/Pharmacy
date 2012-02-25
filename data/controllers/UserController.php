@@ -14,12 +14,13 @@
 				$new_user->is_active = ($new_user->is_active == "on");
 				
 				if($dao->usernameExists($new_user->username)) {
-					echo "username exists";exit;
+					echo "username exists";
 				} else if($dao->emailExists($new_user->email)) {
-					echo "email taken";exit;
+					echo "email taken";
 				}
 				
 				if(isset($request->POST["groups"])){
+					print_r($request->POST["groups"]); exit;
 					$group_ids = $request->POST["groups"];
 					foreach ($group_ids as $group_id){
 						$group = R::load('group', $group_id);
@@ -34,8 +35,9 @@
 			}
 			
 			$smarty->assign("request", $request);
+			$smarty->assign("user", R::dispense('user'));
 			$smarty->assign("groups", R::find('group'));
-			$smarty->display('auth/users/add.tpl');
+			$smarty->display('auth/users/edit.tpl');
 		}
 		
 		public function edit($args){
@@ -50,6 +52,16 @@
 				if($user->id){
 					$edited_user = R::graph($request->POST['user']);
 					$edited_user->id = $id;
+					
+					if(isset($request->POST["groups"])){
+						$group_ids = $request->POST["groups"];
+						foreach ($group_ids as $group_id){
+							$group = R::load('group', $group_id);
+							if($group->id){
+								R::associate($edited_user, $group);
+							}
+						}
+					}
 					
 					$_id = R::store($edited_user);
 					redirectToPage('user-list');
@@ -66,6 +78,27 @@
 			$smarty->assign("request", $request);
 			$smarty->assign("groups", R::find('group'));
 			$smarty->display('auth/users/edit.tpl');
+		}
+		
+		public function view($args){
+			$request = $args["request"];
+			checkLoggedIn($request->user);
+			global $smarty;
+			
+			if ($request->method == "GET"){
+				$id = $args[":id"];
+				$user = R::load("user", $id);
+				
+				if($user->id){ 
+					$smarty->assign("user", $user);
+				}else{
+					PageError::show('404',NULL,'User not found!', "User with Id: $id not found!");
+					die();
+				}
+			}
+			
+			$smarty->assign("request", $request);
+			$smarty->display('auth/users/detailview.tpl');
 		}
 		
 		public function view_list($args){

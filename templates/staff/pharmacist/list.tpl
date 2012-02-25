@@ -4,8 +4,9 @@
 	<div class="row clearfix">
 		<div class="col_12">
 			<div class="widget clearfix" style="min-height: 300px;">
-				<h2>Stock Personel</h2>
+				<h2>Pharmacists</h2>
 				<div class="widget_inside drugs-search">
+					<div id="add" style="width:100%;clear:both"><a href="{#BASE_URL#}/admin/staff/pharmacists/add/" class="button blue" style="float:right">Add Pharmacist</a></div>
 					{if $pharmacists}
 						<table class='regular'>
 							<tr>
@@ -33,7 +34,7 @@
 							{/foreach}
 						</table>
 					{else}
-						No Pharmacist Found
+						No Pharmacists Found
 					{/if}
 				</div>
 			</div>

@@ -12,11 +12,6 @@
 		<div class="pharmacists-dashboard">
 		</div>
 	{else if $request->user->belongsToGroups('doctors')}
-		
-	{else if $request->user->belongsToGroups('inventory-personel')}
-		<div class="inventory-personel-dashboard">
-		</div>
-	{else if $request->user->belongsToGroups('admin')}
 		<div class="row clearfix">
 			<div class="col_12">
 				<div class="widget clearfix" style="height: 300px;">
@@ -31,5 +26,10 @@
 				</div>
 			</div>
 		</div>
+	{else if $request->user->belongsToGroups('inventory-personel')}
+		<div class="inventory-personel-dashboard">
+		</div>
+	{else if $request->user->belongsToGroups('admin')}
+		
 	{/if}
 {/block}
