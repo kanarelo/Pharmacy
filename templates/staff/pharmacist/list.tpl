@@ -6,7 +6,9 @@
 			<div class="widget clearfix" style="min-height: 300px;">
 				<h2>Pharmacists</h2>
 				<div class="widget_inside drugs-search">
-					<div id="add" style="width:100%;clear:both"><a href="{#BASE_URL#}/admin/staff/pharmacists/add/" class="button blue" style="float:right">Add Pharmacist</a></div>
+					{if $request->user->belongsToGroups('admin')}
+						<div id="add" style="width:100%;clear:both"><a href="{#BASE_URL#}/admin/staff/pharmacists/add/" class="button blue" style="float:right">Add Pharmacist</a></div>
+					{/if}
 					{if $pharmacists}
 						<table class='regular'>
 							<tr>

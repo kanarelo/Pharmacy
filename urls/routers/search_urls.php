@@ -9,5 +9,5 @@
 	
 	$user_search = new Route("$BASE_URL/search/products/");
 	$user_search->setMapClass("Product")->setMapMethod("search");
-	$router->addRoute( "user-search", $user_search );
+	$router->addRoute( "product-search", $user_search );
 ?>
