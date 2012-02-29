@@ -13,6 +13,7 @@
 								<th>Id</th>
 								<th>First Name</th>
 								<th>Last Name</th>
+								<th>Speciality</th>
 								<th>Actions</th>
 							</tr>
 							{foreach $doctors as $doctor}
@@ -20,12 +21,11 @@
 									<td>{$doctor->id}</td>
 									<td>{$doctor->first_name}</td>
 									<td>{$doctor->last_name}</td>
+									<td>{$doctor->speciality}</td>
 									<td>
-										<a href="{#BASE_URL#}/doctor/{$product->id}/">R</a>
 										{if $request->user->belongsToGroups('admin,pharmacist')}
-											|
-											<a href="{#BASE_URL#}/admin/staff/doctors/{$doctor->id}/edit/">U</a> |
-											<a href="{#BASE_URL#}/admin/staff/doctors/{$doctor->id}/delete/">D</a>
+											<a href="{#BASE_URL#}/admin/staff/doctors/{$doctor->id}/edit/">Edit</a> |
+											<a href="{#BASE_URL#}/admin/staff/doctors/{$doctor->id}/delete/">Delete</a>
 										{/if}
 									</td>
 								</tr>

@@ -23,11 +23,11 @@
 									<td>{$stock_personel->first_name}</td>
 									<td>{$stock_personel->last_name}</td>
 									<td>
-										<a href="{#BASE_URL#}/stock_personel/{$product->id}/">R</a>
+										<a href="{#BASE_URL#}/stock_personel/{$stock_personel->id}/">View</a>
 										{if $request->user->belongsToGroups('admin,pharmacist')}
 											|
-											<a href="{#BASE_URL#}/admin/staff/stock-personel/{$stock_personel->id}/edit/">U</a> |
-											<a href="{#BASE_URL#}/admin/staff/stock-personel/{$stock_personel->id}/delete/">D</a>
+											<a href="{#BASE_URL#}/admin/staff/stock-personel/{$stock_personel->id}/edit/">Edit</a> |
+											<a href="{#BASE_URL#}/admin/staff/stock-personel/{$stock_personel->id}/delete/">Delete</a>
 										{/if}
 									</td>
 								</tr>

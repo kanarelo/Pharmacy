@@ -1,7 +1,5 @@
 <?php
 	class DoctorController{
-		
-		/*-----------------------------ADMIN CRUD-------------------------*/
 		public function add($args){
 			$request = $args["request"];
 			global $router, $smarty;

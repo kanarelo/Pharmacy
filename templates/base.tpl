@@ -1,26 +1,24 @@
 <html lang="en-us">
 	<head>
-		<meta charset="utf-8">
-		<link rel="apple-touch-con" href="">
-		<title>Muse Admin Panel</title>
-		<link rel="stylesheet" href="{#BASE_URL#}/static/css/columnal.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="{#BASE_URL#}/static/css/jqueryui.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="{#BASE_URL#}/static/css/style.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="{#BASE_URL#}/static/css/global.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="{#BASE_URL#}/static/css/config.css" type="text/css" media="screen">
-		
-		{block "extracss"}
-			<link rel="stylesheet" href="{#BASE_URL#}/static/css/superfish.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="{#BASE_URL#}/static/css/validationEngine.jquery.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="{#BASE_URL#}/static/css/validationEngine.jquery.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="{#BASE_URL#}/static/css/jquery.cleditor.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="{#BASE_URL#}/static/css/fullcalendar.print.css" type="text/css" media="print">
-			<link rel="stylesheet" href="{#BASE_URL#}/static/css/fullcalendar.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="{#BASE_URL#}/static/css/colorbox.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="{#BASE_URL#}/static/css/colorpicker.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="{#BASE_URL#}/static/css/uploadify.css" type="text/css" media="screen">
-		{/block}
-		{block "extrajs"}
+			<meta charset="utf-8">
+			<link rel="apple-touch-con" href="">
+			<title>Muse Admin Panel</title>
+			<link rel="stylesheet" href="{#BASE_URL#}/static/css/columnal.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="{#BASE_URL#}/static/css/jqueryui.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="{#BASE_URL#}/static/css/style.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="{#BASE_URL#}/static/css/global.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="{#BASE_URL#}/static/css/config.css" type="text/css" media="screen">
+			{block "extracss"}
+				<link rel="stylesheet" href="{#BASE_URL#}/static/css/superfish.css" type="text/css" media="screen">
+				<link rel="stylesheet" href="{#BASE_URL#}/static/css/validationEngine.jquery.css" type="text/css" media="screen">
+				<link rel="stylesheet" href="{#BASE_URL#}/static/css/validationEngine.jquery.css" type="text/css" media="screen">
+				<link rel="stylesheet" href="{#BASE_URL#}/static/css/jquery.cleditor.css" type="text/css" media="screen">
+				<link rel="stylesheet" href="{#BASE_URL#}/static/css/fullcalendar.print.css" type="text/css" media="print">
+				<link rel="stylesheet" href="{#BASE_URL#}/static/css/fullcalendar.css" type="text/css" media="screen">
+				<link rel="stylesheet" href="{#BASE_URL#}/static/css/colorbox.css" type="text/css" media="screen">
+				<link rel="stylesheet" href="{#BASE_URL#}/static/css/colorpicker.css" type="text/css" media="screen">
+				<link rel="stylesheet" href="{#BASE_URL#}/static/css/uploadify.css" type="text/css" media="screen">
+			{/block}
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 			<script type="text/javascript" src="{#BASE_URL#}/static/js/jquery.placeholder.1.2.min.shrink.js"></script>
@@ -41,7 +39,7 @@
 			<script type="text/javascript" src="{#BASE_URL#}/static/js/jquery.uploadify.v2.1.4.min.js"></script>
 			<script type="text/javascript" src="{#BASE_URL#}/static/js/swfobject.js"></script>
 			<script src="{#BASE_URL#}/static/js/demo.js"></script>
-		{/block}
+			{block "extrajs"}{/block}
 	</head>
 	<body {block "body-id"}{/block}>
 		{block "body"}
@@ -89,43 +87,46 @@
 							<li>
 								<a href="{#BASE_URL#}/products/"><span>Products</span></a>
 							</li>
-							{if $request->user->belongsToGroups('nurses')}
-							{else if $request->user->belongsToGroups('pharmacists')}
+							{if $request->user->belongsToGroups('nurses,pharmacists,admin')}
 								<li>
 									<a href="{#BASE_URL#}/wards/"><span>Wards</span></a>
 								</li>
+							{/if}
+							{if $request->user->belongsToGroups('doctors')}
+								
+							{/if}
+							{if $request->user->belongsToGroups('inventory-personel')}
+							{/if}
+							
+							{if $request->user->belongsToGroups('nurses,admin,pharmacists')}
 								<li>
-									<a href="" class="sf-with-ul"><span>Staff</span><span class="sf-sub-indicator"> »</span></a>
+									<a href="" class="sf-with-ul"><span>Patients</span><span class="sf-sub-indicator"> »</span></a>
 									<ul style="display: none; visibility: hidden; ">
 										<li>
-											<a href="{#BASE_URL#}/staff/doctors/"><span>Doctors</span></a>
+											<a href="{#BASE_URL#}/patients/inpatients/"><span>Inpatients</span></a>
 										</li>
 										<li>
-											<a href="{#BASE_URL#}/staff/doctors/"><span>Nurses</span></a>
-										</li>
-										<li>
-											<a href="{#BASE_URL#}/staff/stock-personel/"><span>Stock</span></a>
-										</li>
-										<li>
-											<a href="{#BASE_URL#}/staff/pharmacists/"><span>Pharmacists</span></a>
+											<a href="{#BASE_URL#}/patients/outpatients/"><span>Outpatients</span></a>
 										</li>
 									</ul>
 								</li>
-							{else if $request->user->belongsToGroups('doctors')}
-							{else if $request->user->belongsToGroups('inventory-personel')}
 							{/if}
-							{if $request->user->belongsToGroups('admin') && !$request->user->belongsToGroups('pharmacists')}
+							
+							{if $request->user->belongsToGroups('admin,pharmacists')}
+								<li>
+									<a href="{#BASE_URL#}/product-categories/"><span>Categories</span></a>
+								</li>
 								<li>
 									<a href="" class="sf-with-ul"><span>Staff</span><span class="sf-sub-indicator"> »</span></a>
 									<ul style="display: none; visibility: hidden; ">
 										<li>
-											<a href="{#BASE_URL#}/staff/doctors/"><span>Doctors</span></a>
+											<a href="{#BASE_URL#}/admin/staff/doctors/"><span>Doctors</span></a>
 										</li>
 										<li>
-											<a href="{#BASE_URL#}/staff/doctors/"><span>Nurses</span></a>
+											<a href="{#BASE_URL#}/admin/staff/doctors/"><span>Nurses</span></a>
 										</li>
 										<li>
-											<a href="{#BASE_URL#}/staff/stock-personel/"><span>Stock</span></a>
+											<a href="{#BASE_URL#}/admin/staff/stock-personel/"><span>Stock</span></a>
 										</li>
 										<li>
 											<a href="{#BASE_URL#}/staff/pharmacists/"><span>Pharmacists</span></a>

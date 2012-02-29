@@ -1,29 +1,34 @@
 <?php
-	$inpatient_index = new Route("$BASE_URL/patients/inpatients/");
-	$inpatient_index->setMapClass("Inpatient")->setMapMethod("index");
-	$router->addRoute( "inpatient-index", $inpatient_index );
-	
-	$inpatient_list = new Route("$BASE_URL/patients/inpatients/list/");
+	$inpatient_list = new Route("$BASE_URL/patients/inpatients/");
 	$inpatient_list->setMapClass("Inpatient")->setMapMethod("view_list");
 	$router->addRoute( "inpatient-list", $inpatient_list );
-	
-	$inpatient_view = new Route("$BASE_URL/patients/inpatients/:id/");
-	$inpatient_view->setMapClass("Inpatient")->setMapMethod("view")
-				   ->addDynamicElement(":id", '^\d{5}$');
-	$router->addRoute("inpatient-add",$inpatient_view);
 	
 	$inpatient_add = new Route("$BASE_URL/patients/inpatients/add/");
 	$inpatient_add->setMapClass("Inpatient")->setMapMethod("add");
 	$router->addRoute("inpatient-add",$inpatient_add);
 	
-	$inpatient_edit = new Route("$BASE_URL/patients/inpatients/edit/:id/");
+	$inpatient_edit = new Route("$BASE_URL/patients/inpatients/:id/");
+	$inpatient_edit->setMapClass("Inpatient")->setMapMethod("view")
+				   ->addDynamicElement( ":id", '^\d+$' );
+	$router->addRoute("inpatient-view",$inpatient_edit);
+	
+	$inpatient_edit = new Route("$BASE_URL/patients/inpatients/:id/edit/");
 	$inpatient_edit->setMapClass("Inpatient")->setMapMethod("edit")
-				   ->addDynamicElement( ":id", '^\d{5}$' );
-	$router->addRoute("inpatient-add",$inpatient_edit);
+				   ->addDynamicElement( ":id", '^\d+$' );
+	$router->addRoute("inpatient-edit",$inpatient_edit);
 	
-	$inpatient_delete = new Route("$BASE_URL/patients/inpatients/delete/:id/");
+	$inpatient_edit = new Route("$BASE_URL/patients/inpatients/:id/assign-drug/"); 
+	$inpatient_edit->setMapClass("Inpatient")->setMapMethod("assign_drug") 
+				   ->addDynamicElement( ":id", '^\d+$' );
+	$router->addRoute("inpatient-assign",$inpatient_edit);
+	
+	$inpatient_edit = new Route("$BASE_URL/patients/inpatients/:id/clear-bill/"); 
+	$inpatient_edit->setMapClass("Inpatient")->setMapMethod("clear_bill") 
+				   ->addDynamicElement( ":id", '^\d+$' );
+	$router->addRoute("inpatient-clear",$inpatient_edit);
+	
+	$inpatient_delete = new Route("$BASE_URL/patients/inpatients/:id/delete/");
 	$inpatient_delete->setMapClass("Inpatient")->setMapMethod("delete")
-				   ->addDynamicElement(":id", '^\d{5}$');
-	$router->addRoute("inpatient-add",$inpatient_delete);
-	
+				   ->addDynamicElement(":id", '^\d+$');
+	$router->addRoute("inpatient-delete",$inpatient_delete);
 ?>

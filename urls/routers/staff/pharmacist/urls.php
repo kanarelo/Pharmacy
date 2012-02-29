@@ -12,12 +12,12 @@
 	$pharmacist_add->setMapClass("Pharmacist")->setMapMethod("add");
 	$router->addRoute("pharmacist-add",$pharmacist_add);
 	
-	$pharmacist_edit = new Route("$BASE_URL/admin/staff/pharmacists/edit/:id/");
+	$pharmacist_edit = new Route("$BASE_URL/admin/staff/pharmacists/:id/edit/");
 	$pharmacist_edit->setMapClass("Pharmacist")->setMapMethod("edit")
 				   ->addDynamicElement( ":id", '^\d+$' );
 	$router->addRoute("pharmacist-edit",$pharmacist_edit);
 	
-	$pharmacist_delete = new Route("$BASE_URL/admin/staff/pharmacists/delete/:id/");
+	$pharmacist_delete = new Route("$BASE_URL/admin/staff/pharmacists/:id/delete/");
 	$pharmacist_delete->setMapClass("Pharmacist")->setMapMethod("delete")
 				   ->addDynamicElement(":id", '^\d+$');
 	$router->addRoute("pharmacist-delete",$pharmacist_delete);

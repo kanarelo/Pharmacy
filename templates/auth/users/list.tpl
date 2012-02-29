@@ -23,11 +23,11 @@
 									<td>{$user->username}</td>
 									<td>{$user->email}</td>
 									<td>
-										<a href="{#BASE_URL#}/admin/users/{$user->id}/">R</a>
-										{if $request->user->belongsToGroup('admin')}
+										<a href="{#BASE_URL#}/admin/users/{$user->id}/">Read</a>
+										{if $request->user->belongsToGroups('admin')}
 											|
-											<a href="{#BASE_URL#}/admin/users/{$user->id}/edit/">U</a> |
-											<a href="{#BASE_URL#}/admin/users/{$user->id}/delete/">D</a>
+											<a href="{#BASE_URL#}/admin/users/{$user->id}/edit/">Edit</a> |
+											<a href="{#BASE_URL#}/admin/users/{$user->id}/delete/">Delete</a>
 										{/if}
 									</td>
 								</tr>

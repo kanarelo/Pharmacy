@@ -133,6 +133,7 @@
 			$request = $args["request"];
 			checkLoggedIn($request->user);
 			global $smarty;
+			
 			$products = array();
 			
 			if ($request->method == "GET" && isset($request->GET['q'])){

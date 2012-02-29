@@ -25,11 +25,11 @@
 									<td>{$product->price}</td>
 									<td>{if $product->category}{$product->category->name}{/if}</td>
 									<td>
-										<a href="{#BASE_URL#}/products/{$product->id}/">R</a>
+										<a href="{#BASE_URL#}/products/{$product->id}/">View</a>
 										{if $request->user->belongsToGroups('admin')}
 											|
-											<a href="{#BASE_URL#}/admin/products/{$product->id}/edit/">U</a> |
-											<a href="{#BASE_URL#}/admin/products/{$product->id}/delete/">D</a>
+											<a href="{#BASE_URL#}/admin/products/{$product->id}/edit/">Edit</a> |
+											<a href="{#BASE_URL#}/admin/products/{$product->id}/delete/">Delete</a>
 										{/if}
 									</td>
 								</tr>

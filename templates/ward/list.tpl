@@ -23,11 +23,9 @@
 									<td>{$ward->name}</td>
 									<td>{$ward->location}</td>
 									<td>
-										<a href="{#BASE_URL#}/wards/{$ward->id}/">R</a>
 										{if $request->user->belongsToGroups('admin')}
-											|
-											<a href="{#BASE_URL#}/admin/wards/{$ward->id}/edit/">U</a> |
-											<a href="{#BASE_URL#}/admin/wards/{$ward->id}/delete/">D</a>
+											<a href="{#BASE_URL#}/admin/wards/{$ward->id}/edit/">Edit</a> |
+											<a href="{#BASE_URL#}/admin/wards/{$ward->id}/delete/">Delete</a>
 										{/if}
 									</td>
 								</tr>

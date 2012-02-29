@@ -31,7 +31,7 @@
 						<div class="clearfix">
 							<label for="id_category">Category:</label>
 							<div class="input">
-								<select name="product[category]" size="{$categories|@count}">
+								<select name="product[category]">
 									<option>----</option>
 									{foreach $categories as $category}
 										<option value="{$category->id}" {if isset($product->category->id)}{if $category->id eq $product->category->id } selected="selected" {/if}{/if}>

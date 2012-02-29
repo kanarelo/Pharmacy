@@ -4,7 +4,7 @@
 			$request = $args["request"];
 
 			global $router, $smarty;
-			userIsAdmin($request->user);
+			userBelongsToGroups($request->user,'admin,pharmacists');
 			
 			$dao = new AuthDAO();
 			
@@ -45,7 +45,7 @@
 		public function edit($args){
 			$request = $args["request"];
 			global $smarty;
-			userIsAdmin($request->user);
+			userBelongsToGroups($request->user,'admin,pharmacists');
 			
 			$id = $args[":id"];
 			$user = R::load("user", $id);
@@ -87,7 +87,7 @@
 		
 		public function view($args){
 			$request = $args["request"];
-			userIsAdmin($request->user);
+			userBelongsToGroups($request->user,'admin,pharmacists');
 			global $smarty;
 			
 			if ($request->method == "GET"){
@@ -108,7 +108,7 @@
 		
 		public function view_list($args){
 			$request = $args["request"];
-			userIsAdmin($request->user);
+			userBelongsToGroups($request->user,'admin,pharmacists');
 			global $smarty;
 			
 			if ($request->method == "GET"){
