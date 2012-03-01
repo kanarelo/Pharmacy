@@ -9,6 +9,7 @@
 	require_once("settings.php");
 	require_once("/../http/class.request.php");
 	require_once("/../util/funcs.general.php");
+	require_once("/../util/pdf.php");
 	require_once("/../util/PageError.php");
 	require_once("/../lang/en.php");
 	
@@ -16,6 +17,7 @@
 	require_once('/../lib/redbean_orm/rb.php');
 	require_once('/../lib/php_router/php-router.php');
 	require_once('/../lib/smarty_templates/Smarty.class.php');
+	require_once('/../lib/tcpdf/tcpdf.php');
 	
 	//Setup all the Daos
 	require_once("/../data/daos/daos.php");

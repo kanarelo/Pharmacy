@@ -38,8 +38,6 @@
 			}else if ($request->method == "GET"){
 				if ($inpatient->id){
 					$smarty->assign("inpatient", $inpatient);
-					$smarty->assign("users", R::find('user'));
-					$smarty->assign("parent_user", $inpatient->user);
 					
 				}else{
 					PageError::show('404',NULL,'Inpatient not found!', "Inpatient with Id: $id not found!");
@@ -50,13 +48,46 @@
 			$smarty->display('inpatient/edit.tpl');
 		}
 		
+		public function clear_bill_approved($args){
+			$request = $args["request"];
+			global $smarty;
+
+			userBelongsToGroups($request->user,'admin,pharmacists');
+			$id = $args[":id"];
+			$inpatient = R::load("inpatient", $id);
+			
+			$inpatient_products = $inpatient->clearBill();
+			
+			if (count($inpatient_products) > 0){
+				$total = 0; 
+				
+				foreach ($inpatient_products as $inpatient_product){
+					$total += ($inpatient_product->product->price * $inpatient_product->quantity);
+				}
+				
+				$smarty->assign("inpatient", $inpatient);
+				$smarty->assign("total", $total);
+				$smarty->assign("inpatient_products", $inpatient_products);
+				$smarty->assign("request", $request);
+				
+				createPDF($smarty->fetch('receipt.tpl'), $inpatient->name);
+			}
+			
+		}
+		
 		public function clear_bill($args){
 			$request = $args["request"];
 			global $smarty;
 
+			userBelongsToGroups($request->user,'admin,pharmacists');
 			
+			$id = $args[":id"];
+			$inpatient = R::load("inpatient", $id);
+			
+			$smarty->assign("inpatient", $inpatient);
+			$smarty->assign("inpatient_products", R::find('inpatient_product', 'inpatient_id = ? AND NOT cleared = 1', array($inpatient->id)));
 			$smarty->assign("request", $request);
-			$smarty->display('inpatient/assign.tpl');
+			$smarty->display('inpatient/clear_bill.tpl');
 		}
 		
 		public function assign_drug($args){
@@ -69,20 +100,25 @@
 			
 			if ($request->method == "POST"){
 				if($inpatient->id){
-					R::associate($inpatient, R::load("product", $request->POST['product']));
-					$_id = R::store($inpatient);
-					$ip = R::findOne('inpatient_product', 'inpatient_id = ?', array($inpatient->id));
+					$ip = R::findOne('inpatient_product', 'product_id=? AND NOT cleared=1', array($request->POST['product']));
+					if (!is_null($ip)){
+						$ip->quantity += $request->POST['quantity'];
+						
+					}else{
+						$ip = R::load('inpatient_product', R::associate($inpatient, R::load("product", $request->POST['product'])));
+						$_id = R::store($inpatient);
+						$ip->quantity = $request->POST['quantity'];
+					}
+					
 					$ip->time_changed = time();
 					$ip->cleared = 0;
-					$ip->quantity = $request->POST['quantity'];
 					R::store($ip);
-					redirectToPage('inpatient-list');
+					
+					redirectToPage('inpatient-view', array(':id' => $inpatient->id));
 				}
 			}else if ($request->method == "GET"){
 				if ($inpatient->id){
 					$smarty->assign("inpatient", $inpatient);
-					$smarty->assign("users", R::find('user'));
-					$smarty->assign("parent_user", $inpatient->user);
 				}else{
 					PageError::show('404',NULL,'Inpatient not found!', "Inpatient with Id: $id not found!");
 				}

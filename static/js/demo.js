@@ -5,7 +5,7 @@ $(function() {
     $("#countries").autocomplete({
         source: countryList
     });
-
+    
     // Accordion
     $(".accordion").accordion({ header: "h3" });
 
@@ -114,9 +114,9 @@ $(function() {
     //HTML5 Placeholder for lesser browsers. Uses jquery.placeholder.1.2.min.shrink.js
     $.Placeholder.init();
 
-
     //Uses formvalidator
-    $("#form0, #form1, #form2").validationEngine();
+    $(".form").validate();
+    $('.form').attr('novalidate', '');
 
     //Calendar
     var date = new Date();

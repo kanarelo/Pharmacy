@@ -11,7 +11,6 @@
 			{block "extracss"}
 				<link rel="stylesheet" href="{#BASE_URL#}/static/css/superfish.css" type="text/css" media="screen">
 				<link rel="stylesheet" href="{#BASE_URL#}/static/css/validationEngine.jquery.css" type="text/css" media="screen">
-				<link rel="stylesheet" href="{#BASE_URL#}/static/css/validationEngine.jquery.css" type="text/css" media="screen">
 				<link rel="stylesheet" href="{#BASE_URL#}/static/css/jquery.cleditor.css" type="text/css" media="screen">
 				<link rel="stylesheet" href="{#BASE_URL#}/static/css/fullcalendar.print.css" type="text/css" media="print">
 				<link rel="stylesheet" href="{#BASE_URL#}/static/css/fullcalendar.css" type="text/css" media="screen">
@@ -26,8 +25,7 @@
 			<script type="text/javascript" src="{#BASE_URL#}/static/js/jquery.flot.min.js"></script>
 			<script type="text/javascript" src="{#BASE_URL#}/static/js/jquery.flot.pie.min.js"></script>
 			<script type="text/javascript" src="{#BASE_URL#}/static/js/jquery.flot.stack.min.js"></script>
-			<script src="{#BASE_URL#}/static/js/jquery.validationEngine.js"></script>
-			<script src="{#BASE_URL#}/static/js/jquery.validationEngine-en.js"></script>
+			<script src="{#BASE_URL#}/static/js/jquery.validate.min.js"></script>
 			<script src="{#BASE_URL#}/static/js/jquery.dataTables.min.js"></script>
 			<script src="{#BASE_URL#}/static/js/twipsy.js"></script>
 			<script src="{#BASE_URL#}/static/js/jquery.cleditor.min.js"></script>
