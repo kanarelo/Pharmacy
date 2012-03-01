@@ -115,7 +115,7 @@ $(function() {
     $.Placeholder.init();
 
     //Uses formvalidator
-    $(".form").validate();
+    $(".form").validationEngine();
     $('.form').attr('novalidate', '');
 
     //Calendar

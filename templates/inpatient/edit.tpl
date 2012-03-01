@@ -13,19 +13,19 @@
 				    	<div class="clearfix">
 							<label >Name:</label>
 							<div class="input">
-								<input type="text class="required"" name="inpatient[name]" value="{$inpatient->name}"/>
+								<input type="text" class="validate[required]" class="required" name="inpatient[name]" value="{$inpatient->name}"/>
 							</div>
 						</div>
 						<div class="clearfix">
 							<label >Age:</label>
 							<div class="input">
-								<input type="text class="required"" name="inpatient[age]" value="{$inpatient->age}"/>
+								<input type="text" class="validate[required]" class="required" name="inpatient[age]" value="{$inpatient->age}"/>
 							</div>
 						</div>
 						<div class="clearfix">
 							<label >Allergies:</label>
 							<div class="input">
-								<textarea type="text" name="inpatient[allergies]"/>{$inpatient->allergies}</textarea>
+								<textarea class="validate[required]" name="inpatient[allergies]"/>{$inpatient->allergies}</textarea>
 							</div>
 						</div>
 						<div class="clearfix">

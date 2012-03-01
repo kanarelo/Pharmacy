@@ -20,13 +20,13 @@
 		                        <div class="clearfix">
 		                            <label>Username</label>
 		                            <div class="input">
-		                                <input type="text" name="username" class="xlarge"/>
+		                                <input id="username" type="text" class="validate[required]" name="username" class="xlarge"/>
 		                            </div>
 		                        </div>
 		                        <div class="clearfix">
 		                            <label>Password</label>
 		                            <div class="input">
-		                                <input type="password" name="password" class="xlarge"/>
+		                                <input id="password" type="password" class="validate[required]" name="password" class="xlarge"/>
 		                            </div>
 		                        </div>
 		                        <div class="clearfix">
