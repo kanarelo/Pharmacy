@@ -26,7 +26,7 @@
 										{if $request->user->belongsToGroups('admin')}
 											|
 											<a href="{#BASE_URL#}/product-categories/{$category->id}/edit/">Edit</a> |
-											<a href="{#BASE_URL#}/admin/product-categories/{$category->id}/delete/">Delete</a>
+											<a href="{#BASE_URL#}/product-categories/{$category->id}/delete/">Delete</a>
 										{/if}
 									</td>
 								</tr>

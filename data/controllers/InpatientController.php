@@ -199,7 +199,8 @@
 				redirectToPage('inpatient-list');
 			}else if ($request->method == "GET"){
 				$smarty->assign("request", $request);
-				$smarty->display('inpatient/confirm_delete.tpl');
+				$smarty->assign("object_type", "inpatient");
+				$smarty->display('confirm_delete.tpl');
 			}
 		}
 	}
