@@ -108,5 +108,28 @@
 			$smarty->assign("request", $request);
 			$smarty->display('staff/stock_personel/list.tpl');
 		}
+
+		public function delete($args){
+			$request = $args["request"];
+			checkLoggedIn($request->user);
+			
+			global $smarty;
+			
+			if ($request->method == "POST"){
+				$id = $args[":id"];
+				$stock_personel = R::load("stock_personel", $id);
+				
+				if (!$stock_personel->id){
+					PageError::show('404',NULL,'Stock Personel not found!', "Stock Personel with Id: $id not found!");
+				}
+				
+				R::trash($stock_personel);
+				redirectToPage('stock_personel-list');
+			}else if ($request->method == "GET"){
+				$smarty->assign("request", $request);
+				$smarty->assign("object_type", "stock_personel");
+				$smarty->display('confirm_delete.tpl');
+			}
+		}
 	}
 ?>

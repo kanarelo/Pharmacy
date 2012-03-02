@@ -108,5 +108,28 @@
 			$smarty->assign("request", $request);
 			$smarty->display('staff/pharmacist/list.tpl');
 		}
+		
+		public function delete($args){
+			$request = $args["request"];
+			checkLoggedIn($request->user);
+			
+			global $smarty;
+			
+			if ($request->method == "POST"){
+				$id = $args[":id"];
+				$pharmacist = R::load("pharmacist", $id);
+				
+				if (!$pharmacist->id){
+					PageError::show('404',NULL,'Pharmacist not found!', "Pharmacist with Id: $id not found!");
+				}
+				
+				R::trash($pharmacist);
+				redirectToPage('pharmacist-list');
+			}else if ($request->method == "GET"){
+				$smarty->assign("request", $request);
+				$smarty->assign("object_type", "pharmacist");
+				$smarty->display('confirm_delete.tpl');
+			}
+		}
 	}
 ?>

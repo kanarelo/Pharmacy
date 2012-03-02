@@ -80,5 +80,28 @@
 			$smarty->assign("request", $request);
 			$smarty->display('staff/doctor/list.tpl');
 		}
+		
+		public function delete($args){
+			$request = $args["request"];
+			checkLoggedIn($request->user);
+			
+			global $smarty;
+			
+			if ($request->method == "POST"){
+				$id = $args[":id"];
+				$doctor = R::load("doctor", $id);
+				
+				if (!$doctor->id){
+					PageError::show('404',NULL,'Doctor not found!', "Doctor with Id: $id not found!");
+				}
+				
+				R::trash($doctor);
+				redirectToPage('doctor-list');
+			}else if ($request->method == "GET"){
+				$smarty->assign("request", $request);
+				$smarty->assign("object_type", "doctor");
+				$smarty->display('confirm_delete.tpl');
+			}
+		}
 	}
 ?>

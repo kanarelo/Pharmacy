@@ -144,5 +144,28 @@
 			$smarty->assign("request", $request);
 			$smarty->display('product/list.tpl');
 		}
+		
+		public function delete($args){
+			$request = $args["request"];
+			checkLoggedIn($request->user);
+			
+			global $smarty;
+			
+			if ($request->method == "POST"){
+				$id = $args[":id"];
+				$product = R::load("product", $id);
+				
+				if (!$product->id){
+					PageError::show('404',NULL,'Product not found!', "Product with Id: $id not found!");
+				}
+				
+				R::trash($product);
+				redirectToPage('product-list');
+			}else if ($request->method == "GET"){
+				$smarty->assign("request", $request);
+				$smarty->assign("object_type", "product");
+				$smarty->display('confirm_delete.tpl');
+			}
+		}
 	}
 ?>

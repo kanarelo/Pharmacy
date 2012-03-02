@@ -98,5 +98,28 @@
 			$smarty->assign("outpatients", $outpatients);
 			$smarty->display('outpatient/list.tpl');
 		}
+		
+		public function delete($args){
+			$request = $args["request"];
+			checkLoggedIn($request->user);
+			
+			global $smarty;
+			
+			if ($request->method == "POST"){
+				$id = $args[":id"];
+				$outpatient = R::load("outpatient", $id);
+				
+				if (!$outpatient->id){
+					PageError::show('404',NULL,'Outpatient not found!', "Outpatient with Id: $id not found!");
+				}
+				
+				R::trash($outpatient);
+				redirectToPage('outpatient-list');
+			}else if ($request->method == "GET"){
+				$smarty->assign("request", $request);
+				$smarty->assign("object_type", "outpatient");
+				$smarty->display('confirm_delete.tpl');
+			}
+		}
 	}
 ?>

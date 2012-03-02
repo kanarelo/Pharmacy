@@ -115,5 +115,28 @@
 			$smarty->assign("request", $request);
 			$smarty->display('auth/users/list.tpl');
 		}
+		
+		public function delete($args){
+			$request = $args["request"];
+			checkLoggedIn($request->user);
+			
+			global $smarty;
+			
+			if ($request->method == "POST"){
+				$id = $args[":id"];
+				$user = R::load("user", $id);
+				
+				if (!$user->id){
+					PageError::show('404',NULL,'User not found!', "User with Id: $id not found!");
+				}
+				
+				R::trash($user);
+				redirectToPage('user-list');
+			}else if ($request->method == "GET"){
+				$smarty->assign("request", $request);
+				$smarty->assign("object_type", "user");
+				$smarty->display('confirm_delete.tpl');
+			}
+		}
 	}
 ?>

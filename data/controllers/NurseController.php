@@ -204,5 +204,28 @@
 			$smarty->assign("request", $request);
 			$smarty->display('staff/nurse/list.tpl');
 		}
+		
+		public function delete($args){
+			$request = $args["request"];
+			checkLoggedIn($request->user);
+			
+			global $smarty;
+			
+			if ($request->method == "POST"){
+				$id = $args[":id"];
+				$nurse = R::load("nurse", $id);
+				
+				if (!$nurse->id){
+					PageError::show('404',NULL,'Nurse not found!', "Nurse with Id: $id not found!");
+				}
+				
+				R::trash($nurse);
+				redirectToPage('nurse-list');
+			}else if ($request->method == "GET"){
+				$smarty->assign("request", $request);
+				$smarty->assign("object_type", "nurse");
+				$smarty->display('confirm_delete.tpl');
+			}
+		}
 	}
 ?>

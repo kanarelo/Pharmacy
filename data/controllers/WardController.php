@@ -106,5 +106,28 @@
 			$smarty->assign("request", $request);
 			$smarty->display('ward/list.tpl');
 		}
+		
+		public function delete($args){
+			$request = $args["request"];
+			checkLoggedIn($request->user);
+			
+			global $smarty;
+			
+			if ($request->method == "POST"){
+				$id = $args[":id"];
+				$ward = R::load("ward", $id);
+				
+				if (!$ward->id){
+					PageError::show('404',NULL,'Ward not found!', "Ward with Id: $id not found!");
+				}
+				
+				R::trash($ward);
+				redirectToPage('ward-list');
+			}else if ($request->method == "GET"){
+				$smarty->assign("request", $request);
+				$smarty->assign("object_type", "ward");
+				$smarty->display('confirm_delete.tpl');
+			}
+		}
 	}
 ?>

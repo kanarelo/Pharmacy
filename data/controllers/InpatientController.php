@@ -180,5 +180,27 @@
 			$smarty->assign("request", $request);
 			$smarty->display('inpatient/list.tpl');
 		}
+		
+		public function delete($args){
+			$request = $args["request"];
+			checkLoggedIn($request->user);
+			
+			global $smarty;
+			
+			if ($request->method == "POST"){
+				$id = $args[":id"];
+				$inpatient = R::load("inpatient", $id);
+				
+				if (!$inpatient->id){
+					PageError::show('404',NULL,'Inpatient not found!', "Inpatient with Id: $id not found!");
+				}
+				
+				R::trash($inpatient);
+				redirectToPage('inpatient-list');
+			}else if ($request->method == "GET"){
+				$smarty->assign("request", $request);
+				$smarty->display('inpatient/confirm_delete.tpl');
+			}
+		}
 	}
 ?>

@@ -116,5 +116,28 @@
 			$smarty->assign("request", $request);
 			$smarty->display('category/list.tpl');
 		}
+		
+		public function delete($args){
+			$request = $args["request"];
+			checkLoggedIn($request->user);
+			
+			global $smarty;
+			
+			if ($request->method == "POST"){
+				$id = $args[":id"];
+				$category = R::load("category", $id);
+				
+				if (!$category->id){
+					PageError::show('404',NULL,'Category not found!', "Category with Id: $id not found!");
+				}
+				
+				R::trash($category);
+				redirectToPage('category-list');
+			}else if ($request->method == "GET"){
+				$smarty->assign("request", $request);
+				$smarty->assign("object_type", "category");
+				$smarty->display('confirm_delete.tpl');
+			}
+		}
 	}
 ?>
