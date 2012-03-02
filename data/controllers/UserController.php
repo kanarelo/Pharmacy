@@ -21,9 +21,6 @@
 				
 				if(isset($request->POST["groups"])){
 					$group_ids = $request->POST["groups"];
-					if(count($group_ids)){
-						R::clearRelations($edited_user, 'group');
-					}
 					foreach ($group_ids as $group_id){
 						$group = R::load('group', $group_id);
 						if($group->id){

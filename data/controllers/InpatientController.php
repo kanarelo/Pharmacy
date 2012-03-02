@@ -4,12 +4,12 @@
 			$request = $args["request"];
 			global $router, $smarty;
 			userBelongsToGroups($request->user,'admin,pharmacists');
-			
+
 			if ($request->method == "POST"){
 				$new_inpatient = R::graph($request->POST['inpatient']);
 				
 				$_id = R::store($new_inpatient);
-				redirectToPag('inpatient-list');
+				redirectToPage('inpatient-list');
 			}
 			
 			$smarty->assign("users", R::find('user'));
