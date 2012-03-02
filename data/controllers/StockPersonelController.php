@@ -124,7 +124,7 @@
 				}
 				
 				R::trash($stock_personel);
-				redirectToPage('stock_personel-list');
+				redirectToPage('stock-personel-list');
 			}else if ($request->method == "GET"){
 				$smarty->assign("request", $request);
 				$smarty->assign("object_type", "stock_personel");
