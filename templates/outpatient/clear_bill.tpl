@@ -16,10 +16,10 @@
 	<div class="row clearfix">
 		<div class="col_12">
 			<div class="widget clearfix" style="min-height: 300px;">
-				<h2>Clear bill: {$inpatient->name}</h2>
+				<h2>Clear bill: {$patient->name}</h2>
 				<div class="widget_inside drugs-search">
 					<div>
-						<h4>You are about to clear {$inpatient->name}'s bill with this action, proceed?</h4>
+						<h4>You are about to clear {$patient->name}'s bill with this action, proceed?</h4>
 						<br /> 
 					</div>
 					<table class='regular'>
@@ -32,13 +32,13 @@
 								<th>Subtotal</th>
 							</tr>
 						</thead>
-						{foreach $patient_products as $inpatient_product}
+						{foreach $patient_products as $patient_product}
 							<tr>
-								<td>{$inpatient_product->product->name}</td>
-								<td>{$inpatient_product->quantity}</td>
-								<td>{$inpatient_product->product->price}</td>
-								<td>{$inpatient_product->time_changed|date_format:"d/m/Y"}</td>
-								<td class="subtotal">{$inpatient_product->quantity * $inpatient_product->product->price}</td>
+								<td>{$patient_product->product->name}</td>
+								<td>{$patient_product->quantity}</td>
+								<td>{$patient_product->product->price}</td>
+								<td>{$patient_product->time_changed|date_format:"d/m/Y"}</td>
+								<td class="subtotal">{$patient_product->quantity * $patient_product->product->price}</td>
 							</tr>
 						{/foreach}
 						<tr>
@@ -51,7 +51,7 @@
 					</table>
 					{if $request->user->belongsToGroups('pharmacists')}
 						<br />
-						<a style="float: right" class="button blue" href="{#BASE_URL#}/patients/inpatients/{$inpatient->id}/clear-bill-approved/">Approve Clearance and Generate Receipt</a>
+						<a style="float: right" class="button blue" href="{#BASE_URL#}/patients/outpatients/{$patient->id}/clear-bill-approved/">Approve Clearance and Generate Receipt</a>
 					{/if}
 				</div>
 			</div>

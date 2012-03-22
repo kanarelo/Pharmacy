@@ -539,3 +539,5 @@ footer {background: #ddd; padding-top: 20px}
 
 #aurora_option select {padding: 0; }
 #aurora_option label {padding-top: 5px; color: #929292}
+
+label.error { color: #B90000; padding-left: 10px; }

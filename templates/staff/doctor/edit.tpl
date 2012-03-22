@@ -12,19 +12,19 @@
 						<div class="clearfix">
 							<label for="id_first_name">First Name:</label>
 							<div class="input">
-								<input type="text" name="staff[first_name]" value="{$doctor->first_name}" />
+								<input type="text" class="required" name="staff[first_name]" value="{$doctor->first_name}" style="float: left" />
 							</div>
 						</div>
 						<div class="clearfix">
 							<label for="id_last_name">Last Name:</label>
 							<div class="input">
-								<input type="text" name="staff[last_name]" value="{$doctor->last_name}" />
+								<input type="text" class="required" name="staff[last_name]" value="{$doctor->last_name}" style="float: left"/>
 							</div>
 						</div>
 						<div class="clearfix">
 							<label for="id_speciality">Speciality:</label>
 							<div class="input">
-								<input type="text" name="staff[speciality]" value="{$doctor->speciality}" />
+								<input type="text" class="required" name="staff[speciality]" value="{$doctor->speciality}" style="float: left"/>
 							</div>
 						</div>
 						<div class="clearfix">
@@ -36,7 +36,7 @@
 						<div class="clearfix">
 							<label for="id_speciality">User:</label>
 							<div class="input">
-								<select name="user">
+								<select name="user" class="required" style="float: left">
 									<option value='null'>----</option>
 									{foreach $users as $user}
 										<option value='{$user->id}' {if isset($parent_user)}{if $user->id eq $parent_user->id}selected="selected"{/if}{/if}>

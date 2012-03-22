@@ -9,7 +9,7 @@
 					{if $request->user->belongsToGroups('admin')}
 						<div id="add" style="width:100%;clear:both"><a href="{#BASE_URL#}/patients/inpatients/add/" class="button blue" style="float:right">Add Inpatient</a></div>
 					{/if}
-					{if $inpatients}
+					{if $patients}
 						<table class='regular'>
 							<tr>
 								<th>Id</th>
@@ -18,7 +18,7 @@
 								<th>Gender</th>
 								<th>Actions</th>
 							</tr>
-							{foreach $inpatients as $inpatient}
+							{foreach $patients as $inpatient}
 								<tr>	
 									<td>{$inpatient->id}</td>
 									<td><a href="{#BASE_URL#}/patients/inpatients/{$inpatient->id}/">{$inpatient->name}</a></td>
@@ -30,7 +30,7 @@
 											<a href="{#BASE_URL#}/patients/inpatients/{$inpatient->id}/delete/">Delete</a>
 										{/if}
 										{if $request->user->belongsToGroups('nurses')}
-											<a href="{#BASE_URL#}/patients/inpatients/{$inpatient->id}/assign-drug/">Assign Drug</a>
+											| <a href="{#BASE_URL#}/patients/inpatients/{$patient->id}/assign-drug/">Assign Drug</a>
 										{/if}
 									</td>
 								</tr>

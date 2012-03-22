@@ -13,19 +13,19 @@
 				    	<div class="clearfix">
 							<label >Name:</label>
 							<div class="input">
-								<input type="text" name="ward[name]" value="{$ward->name}"/>
+								<input type="text" name="ward[name]" value="{$ward->name}" class="required" style="float: left"/>
 							</div>
 						</div>
 						<div class="clearfix">
 							<label >Location:</label>
 							<div class="input">
-								<input type="text" name="ward[location]" value="{$ward->location}"/>
+								<input type="text" name="ward[location]" value="{$ward->location}" class="required" style="float: left"/>
 							</div>
 						</div>
 						<div class="clearfix">
 							<label >Description:</label>
 							<div class="input">
-								<textarea type="text" name="ward[notes]"/>{$ward->notes}</textarea>
+								<textarea type="text" name="ward[notes]" class="required" style="float: left">{$ward->notes}</textarea>
 							</div>
 						</div>
 						<div class="clearfix grey-highlight">

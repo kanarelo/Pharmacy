@@ -13,7 +13,7 @@
 						<div class="clearfix">
 							<label for="text_field">Name:</label>
 							<div class="input">
-								<input type="text" class="validate[required]" name="category[name]" value="{$category->name}"/>
+								<input type="text" class="required" name="category[name]" value="{$category->name}" style="float:left"/>
 							</div>
 						</div>
 						<div class="clearfix grey-highlight">

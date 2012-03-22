@@ -17,7 +17,9 @@
 							Email: {$user->email}
 						</div>
 						<div class="clearfix">
-							<a class="button blue" href="{#BASE_URL#}/auth/change-password/">Change Password</a>
+							{if $request->user->id eq $user->id}
+								<a class="button blue" href="{#BASE_URL#}/auth/change-password/">Change Password</a>
+							{/if}
 							<a class="button" href="{#BASE_URL#}/admin/users/{$user->id}/edit/">Edit</a>
 						</div>
 					</div>

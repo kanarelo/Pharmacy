@@ -2,10 +2,9 @@
 	require_once("auth/User.php");
 	require_once("auth/Group.php");
 	
-	require_once("patients/Patient.php");
+	require_once("patients/Ward.php");
 	require_once("patients/Inpatient.php");
 	require_once("patients/Outpatient.php");
-	require_once("patients/Ward.php");
 	
 	require_once("prescription/Prescription.php");
 	require_once("prescription/PrescriptionCart.php");

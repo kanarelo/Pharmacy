@@ -12,11 +12,11 @@
 	</tr>
 	<tr>
 		<td colspan="1"><H3>Name:</H3></td>
-		<td colspan="3"><H3>{$inpatient->name}</H3></td>
+		<td colspan="3"><H3>{$patient->name}</H3></td>
 	</tr>
 	<tr>
 		<td colspan="1"><H3>Age:</H3></td>
-		<td colspan="3"><H3>{$inpatient->age}</H3></td>
+		<td colspan="3"><H3>{$patient->age}</H3></td>
 	</tr>
 	<tr>
 		<td colspan="4">
@@ -30,13 +30,13 @@
 						<th><u>Subtotal</u></th>
 					</tr>
 				</thead>
-				{foreach $inpatient_products as $inpatient_product}
+				{foreach $patient_products as $patient_product}
 					<tr>
-						<td>{$inpatient_product->product->name}</td>
-						<td>{$inpatient_product->quantity}</td>
-						<td>{$inpatient_product->product->price}</td>
-						<td>{$inpatient_product->time_changed|date_format:"d/m/Y"}</td>
-						<td class="subtotal">{$inpatient_product->quantity * $inpatient_product->product->price}</td>
+						<td>{$patient_product->product->name}</td>
+						<td>{$patient_product->quantity}</td>
+						<td>{$patient_product->product->price}</td>
+						<td>{$patient_product->time_changed|date_format:"d/m/Y"}</td>
+						<td class="subtotal">{$patient_product->quantity * $patient_product->product->price}</td>
 					</tr>
 				{/foreach}
 				<tr>

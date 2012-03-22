@@ -11,15 +11,15 @@
 						<input type="hidden" name="staff[type]" value="nurse" />
 						<div class="clearfix">
 							<label for="id_first_name">First Name:</label>
-							<div class="input"><input type="text" name="staff[first_name]" value="{$nurse->first_name}" /></div>
+							<div class="input"><input type="text" class="required" name="staff[first_name]" value="{$nurse->first_name}" style="float: left"/></div>
 						</div>
 						<div class="clearfix">
 							<label for="id_last_name">Last Name:</label>
-							<div class="input"><input type="text" name="staff[last_name]" value="{$nurse->last_name}" /></div>
+							<div class="input"><input type="text" class="required" name="staff[last_name]" value="{$nurse->last_name}" style="float: left"/></div>
 						</div>
 						<div class="clearfix">
 							<label for="id_speciality">Speciality:</label>
-							<div class="input"><input type="text" name="staff[speciality]" value="{$nurse->speciality}" /></div>
+							<div class="input"><input type="text" class="required" name="staff[speciality]" value="{$nurse->speciality}" style="float: left"/></div>
 						</div>
 						<div class="clearfix">
 							<label for="id_speciality">Notes:</label>
@@ -29,8 +29,8 @@
 						</div>
 						<div class="clearfix">
 							<label for="id_speciality">User:</label>
-							<div class="input">
-								<select name="user">
+							<div class="input" >
+								<select name="user" class="required" style="float: left">
 									<option value='null'>----</option>
 									{html_options options=$users selected=$nurse->ownUser[0]->id}
 								</select>

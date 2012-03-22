@@ -13,25 +13,25 @@
 				    	<div class="clearfix">
 							<label >Name:</label>
 							<div class="input">
-								<input type="text" name="product[name]" value="{$product->name}"/>
+								<input type="text" class="required" name="product[name]" value="{$product->name}" style="float: left"/>
 							</div>
 						</div>
 						<div class="clearfix">
 							<label >Price:</label>
 							<div class="input">
-								<input type="text" name="product[price]" value="{$product->price}"/>
+								<input type="number" class="required" name="product[price]" value="{$product->price}" style="float: left"/>
 							</div>
 						</div>
 						<div class="clearfix">
 							<label >Description:</label>
 							<div class="input">
-								<textarea type="text" name="product[description]"/>{$product->description}</textarea>
+								<textarea type="text" name="product[description]" class="required" style="float: left">{$product->description}</textarea>
 							</div>
 						</div>
 						<div class="clearfix">
 							<label for="id_category">Category:</label>
 							<div class="input">
-								<select name="product[category]">
+								<select name="product[category]" class="required" style="float: left">
 									<option>----</option>
 									{foreach $categories as $category}
 										<option value="{$category->id}" {if isset($product->category->id)}{if $category->id eq $product->category->id } selected="selected" {/if}{/if}>

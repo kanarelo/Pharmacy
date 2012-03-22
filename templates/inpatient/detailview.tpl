@@ -16,17 +16,17 @@
 	<div class="row clearfix">
 		<div class="col_12">
 			<div class="widget clearfix" style="min-height: 300px;">
-				<h2>Inpatient Details: {$inpatient->name}</h2>
+				<h2>Inpatient Details: {$patient->name}</h2>
 				<div class="widget_inside drugs-search">
 					<div class="form">
 						<div class="clearfix">
-							Id: {$inpatient->id}
+							Id: {$patient->id}
 						</div>
 						<div class="clearfix">
-							Name: {$inpatient->name}
+							Name: {$patient->name}
 						</div>
 					</div>
-					{if $inpatient_products}
+					{if $patient_products}
 						<br />
 						<h4>Drug History</h4>
 						<table class='regular'>
@@ -39,13 +39,13 @@
 									<th>Subtotal</th>
 								</tr>
 							</thead>
-							{foreach $inpatient_products as $inpatient_product}
+							{foreach $patient_products as $patient_product}
 								<tr>
-									<td>{$inpatient_product->product->name}</td>
-									<td>{$inpatient_product->quantity}</td>
-									<td>{$inpatient_product->product->price}</td>
-									<td>{$inpatient_product->time_changed|date_format:"d/m/Y"}</td>
-									<td class="subtotal">{$inpatient_product->quantity * $inpatient_product->product->price}</td>
+									<td>{$patient_product->product->name}</td>
+									<td>{$patient_product->quantity}</td>
+									<td>{$patient_product->product->price}</td>
+									<td>{$patient_product->time_changed|date_format:"d/m/Y"}</td>
+									<td class="subtotal">{$patient_product->quantity * $patient_product->product->price}</td>
 								</tr>
 							{/foreach}
 							<tr>
@@ -71,8 +71,8 @@
 					{/if}
 					{if $request->user->belongsToGroups('pharmacists')}
 						<br />
-						<a style="float: left" class="button" href="{#BASE_URL#}/patients/inpatients/{$inpatient->id}/assign-drug/">Assign {if $inpatient_products} More {/if}Drugs</a>
-						<a style="float: right" class="button blue" href="{#BASE_URL#}/patients/inpatients/{$inpatient->id}/clear-bill/">Clear bill</a>
+						<a style="float: left" class="button" href="{#BASE_URL#}/patients/inpatients/{$patient->id}/assign-drug/">Assign {if $patient_products} More {/if}Drugs</a>
+						<a style="float: right" class="button blue" href="{#BASE_URL#}/patients/inpatients/{$patient->id}/clear-bill/">Clear bill</a>
 					{/if}
 				</div>
 			</div>

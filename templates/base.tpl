@@ -18,8 +18,8 @@
 				<link rel="stylesheet" href="{#BASE_URL#}/static/css/colorpicker.css" type="text/css" media="screen">
 				<link rel="stylesheet" href="{#BASE_URL#}/static/css/uploadify.css" type="text/css" media="screen">
 			{/block}
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+			<script type="text/javascript" src="{#BASE_URL#}/static/js/jquery.min.js"></script>
+			<script type="text/javascript" src="{#BASE_URL#}/static/js/jquery-ui.min.js"></script>
 			<script type="text/javascript" src="{#BASE_URL#}/static/js/jquery.placeholder.1.2.min.shrink.js"></script>
 			<script src="{#BASE_URL#}/static/js/superfish.js"></script>
 			<script type="text/javascript" src="{#BASE_URL#}/static/js/jquery.flot.min.js"></script>
@@ -96,16 +96,20 @@
 							{if $request->user->belongsToGroups('inventory-personel')}
 							{/if}
 							
-							{if $request->user->belongsToGroups('nurses,admin,pharmacists')}
+							{if $request->user->belongsToGroups('nurses,admin,pharmacists,doctors')}
 								<li>
-									<a href="" class="sf-with-ul"><span>Patients</span><span class="sf-sub-indicator"> »</span></a>
+									<a href="#" class="sf-with-ul"><span>Patients</span><span class="sf-sub-indicator"> »</span></a>
 									<ul style="display: none; visibility: hidden; ">
+									{if $request->user->belongsToGroups('nurses,admin,pharmacists')}
 										<li>
 											<a href="{#BASE_URL#}/patients/inpatients/"><span>Inpatients</span></a>
 										</li>
+									{/if}
+									{if $request->user->belongsToGroups('nurses,admin,pharmacists,doctors')}
 										<li>
 											<a href="{#BASE_URL#}/patients/outpatients/"><span>Outpatients</span></a>
 										</li>
+									{/if}
 									</ul>
 								</li>
 							{/if}
@@ -134,6 +138,18 @@
 								<li>
 									<a href="{#BASE_URL#}/admin/users/"><span>Users</span></a>
 								</li>
+								{if $request->user->belongsToGroups('admin,pharmacists,doctors')}
+									<li>
+										<a href="#" class="sf-with-ul"><span>Reports</span><span class="sf-sub-indicator"> »</span></a>
+										<ul style="display: none; visibility: hidden; ">
+											{if $request->user->belongsToGroups('admin,pharmacists')}
+												<li>
+													<a href="{#BASE_URL#}/reports/feedback/"><span>Feedback</span></a>
+												</li>
+											{/if}
+										</ul>
+									</li>
+								{/if}
 							{/if}
 						</ul>
 					</nav>

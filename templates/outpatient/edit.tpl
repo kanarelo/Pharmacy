@@ -9,39 +9,39 @@
 				<h2>Add Outpatient</h2>
 				<div class="widget_inside drugs-search">
 					<form class="form" method="POST" action=".">
-						<input type="hidden" name="outpatient[type]" value="outpatient" />
+						<input type="hidden" name="patient[type]" value="outpatient" />
 				    	<div class="clearfix">
 							<label >Name:</label>
 							<div class="input">
-								<input type="text class="required" name="outpatient[name]" value="{$outpatient->name}"/>
+								<input type="text" class="required" style="float: left" name="patient[name]" value="{$patient->name}"/>
 							</div>
 						</div>
 						<div class="clearfix">
 							<label >Age:</label>
 							<div class="input">
-								<input type="text class="required" name="outpatient[age]" value="{$outpatient->age}"/>
+								<input type="number" class="required" style="float: left" name="patient[age]" value="{$patient->age}"/>
 							</div>
 						</div>
 						<div class="clearfix">
 							<label >Allergies:</label>
 							<div class="input">
-								<textarea type="text" name="outpatient[allergies]"/>{$outpatient->allergies}</textarea>
+								<textarea type="text" name="patient[allergies]" class="required" style="float: left">{$patient->allergies}</textarea>
 							</div>
 						</div>
 						<div class="clearfix">
 							<label >Gender:</label>
 							<div class="input">
-								<select name="outpatient[gender]">
+								<select name="patient[gender]" class="required" style="float: left">
 									<option value="">----</option>
-									<option value="M" {if $outpatient->gender=="M"}selected="selected"{/if}>Male</option>
-									<option value="F" {if $outpatient->gender=="M"}selected="selected"{/if}>Female</option>
+									<option value="M" {if $patient->gender=="M"}selected="selected"{/if}>Male</option>
+									<option value="F" {if $patient->gender=="M"}selected="selected"{/if}>Female</option>
 								</select>
 							</div>
 						</div>
 						<div class="clearfix">
 							<label >Note:</label>
 							<div class="input">
-								<textarea type="text" name="outpatient[notes]"/>{$outpatient->notes}</textarea>
+								<textarea type="text" name="patient[notes]" class="required" style="float: left">{$patient->notes}</textarea>
 							</div>
 						</div>
 						<div class="clearfix grey-highlight">

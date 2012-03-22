@@ -9,7 +9,7 @@
 				<h2>Product Feedback</h2>
 				<div class="widget_inside drugs-search">
 					<form class="form" method="POST" action=".">
-						<input type="hidden" name="feedback[type]" value="feedback" />
+						<input type="hidden" name="feedback[type]" value="productfeedback" />
 						<div class="clearfix">
 							<label for="text_field">Reason:</label>
 							<div class="input">

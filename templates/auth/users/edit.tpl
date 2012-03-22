@@ -11,13 +11,13 @@
 						<div class="clearfix">
 							<label for="id_username">Username:</label>
 							<div class="input">
-								<input type="text" name="user[username]" value="{$user->username}" />
+								<input class="required" type="text" name="user[username]" value="{$user->username}" style="float: left"/>
 							</div>
 						</div>
 						<div class="clearfix">
 							<label for="id_email">Email:</label>
 							<div class="input">
-								<input id="id_email" type="text" name="user[email]" value="{$user->email}" />
+								<input class="required" id="id_email" type="email" name="user[email]" value="{$user->email}" style="float: left"/>
 							</div>
 						</div>
 						<div class="clearfix">
@@ -29,7 +29,7 @@
 						<div class="clearfix">
 							<label for="id_groups">Groups:</label>
 							<div class="input">
-								<select multiple name="groups[]" size="{$groups|@count}">
+								<select multiple name="groups[]" size="{$groups|@count}" class="required" style="float:left">
 									{foreach $groups as $group}
 										<option value="{$group->id}"
 											{if isset($related_groups[$group->id])}

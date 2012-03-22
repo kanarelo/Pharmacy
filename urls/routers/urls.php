@@ -24,4 +24,8 @@
 	$contacts = new Route("$BASE_URL/contacts/");
 	$contacts->setMapClass("Default")->setMapMethod("contacts");
 	$router->addRoute( "contacts", $contacts );
+	
+	$feedback = new Route("$BASE_URL/reports/feedback/");
+	$feedback->setMapClass("Default")->setMapMethod("feedback");
+	$router->addRoute( "feedback", $feedback );
 ?>

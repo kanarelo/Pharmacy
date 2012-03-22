@@ -9,7 +9,7 @@
 					{if $request->user->belongsToGroups('admin')}
 						<div id="add" style="width:100%;clear:both"><a href="{#BASE_URL#}/patients/outpatients/add/" class="button blue" style="float:right">Add Outpatient</a></div>
 					{/if}
-					{if $outpatients}
+					{if $patients}
 						<table class='regular'>
 							<tr>
 								<th>Id</th>
@@ -18,16 +18,19 @@
 								<th>Gender</th>
 								<th>Actions</th>
 							</tr>
-							{foreach $outpatients as $outpatient}
+							{foreach $patients as $patient}
 								<tr>	
-									<td>{$outpatient->id}</td>
-									<td>{$outpatient->name}</td>
-									<td>{$outpatient->age}</td>
-									<td>{$outpatient->gender}</td>
+									<td>{$patient->id}</td>
+									<td><a href="{#BASE_URL#}/patients/outpatients/{$patient->id}/">{$patient->name}</a></td>
+									<td>{$patient->age}</td>
+									<td>{$patient->gender}</td>
 									<td>
 										{if $request->user->belongsToGroups('admin')}
-											<a href="{#BASE_URL#}/patients/outpatients/{$outpatient->id}/edit/">Edit</a> |
-											<a href="{#BASE_URL#}/patients/outpatients/{$outpatient->id}/delete/">Delete</a>
+											<a href="{#BASE_URL#}/patients/outpatients/{$patient->id}/edit/">Edit</a> |
+											<a href="{#BASE_URL#}/patients/outpatients/{$patient->id}/delete/">Delete</a>
+										{/if}
+										{if $request->user->belongsToGroups('doctors')}
+											| <a href="{#BASE_URL#}/patients/outpatients/{$patient->id}/assign-drug/">Assign Drug</a>
 										{/if}
 									</td>
 								</tr>

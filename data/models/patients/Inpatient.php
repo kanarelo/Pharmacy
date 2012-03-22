@@ -1,5 +1,5 @@
 <?php
-	class Model_Inpatient extends Model_Patient{
+	class Model_Inpatient extends RedBean_SimpleModel{
 		public function clearBill(){
 			$inpatient_products = R::find('inpatient_product', 'inpatient_id = ? AND NOT cleared = 1', array($this->id));
 			

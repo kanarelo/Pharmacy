@@ -33,6 +33,7 @@
 			$status = $args[":status"];
 			$product = R::load("product", $id);
 			
+			
 			if(!$product->id){
 				PageError::show('404',NULL,'Product not found!', "Product with Id: $id not found!");
 				die();
@@ -42,6 +43,8 @@
 				$feedback = R::graph($request->POST['feedback']);
 				$feedback->product = $product;
 				$feedback->status = $status;
+				$feedback->doctor = R::findOne('doctor', 'user_id=?', array($request->user));
+				$feedback->dateapproved = time();
 				$_id = R::store($feedback);
 				
 				if($_id){
@@ -112,6 +115,10 @@
 				}
 			}
 			
+			if ($request->user->belongsToGroups('doctors')){
+				$smarty->assign("feedback", R::find("feedback", 'product_id = ? AND status = "approve"', array($product->id)));
+			}
+			
 			$smarty->assign("request", $request);
 			$smarty->display('product/detailview.tpl');
 		}
@@ -137,7 +144,7 @@
 			$products = array();
 			
 			if ($request->method == "GET" && isset($request->GET['q'])){
-				$products = R::find("product", 'name=?', array($request->GET['q']));
+				$products = R::find("product", 'name like "%'.$request->GET['q'].'%"');
 			}
 			
 			$smarty->assign("products", $products);
